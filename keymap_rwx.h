@@ -22,13 +22,13 @@ const uint8_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
          TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN23,RBRC,TRNS,   TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS, \
          TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN24,FN25,FN28,   TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS, \
          TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN26,FN27,     TRNS,                      TRNS,TRNS,TRNS,      \
-         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,NUBS,FN29,FN30,     TRNS,        TRNS,         TRNS,TRNS,TRNS,TRNS, \
+         FN31,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,NUBS,FN29,FN30,     TRNS,        TRNS,         TRNS,TRNS,TRNS,TRNS, \
          TRNS,TRNS,TRNS,               TRNS,               TRNS,TRNS,TRNS,TRNS,   TRNS,TRNS,TRNS,    TRNS,TRNS),
     /* Layer 3: media layer */
     KEYMAP(\
-          FN3,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,        MPRV,MPLY,MNXT,                         \
-           NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,VOLU,      NO,  NO,  NO,  NO, \
-           NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,MUTE,VOLD,      NO,  NO,  NO,  NO, \
+          FN3,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
+           NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,   MPRV,MPLY,MNXT,      NO,  NO,  NO,  NO, \
+           NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,   VOLD,MUTE,VOLU,      NO,  NO,  NO,  NO, \
            NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,       NO,                        NO,  NO,  NO,      \
            NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,       NO,          NO,           NO,  NO,  NO,  NO, \
            NO,  NO,  NO,                 NO,                 NO,  NO,TRNS,  NO,     NO,  NO,  NO,      NO,  NO),

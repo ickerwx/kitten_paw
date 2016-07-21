@@ -18,12 +18,41 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+/* max value on report descriptor */
+#define MOUSEKEY_MOVE_MAX       127
+#define MOUSEKEY_WHEEL_MAX      127
+
+#ifndef MOUSEKEY_MOVE_DELTA
+#define MOUSEKEY_MOVE_DELTA     5
+#endif
+#ifndef MOUSEKEY_WHEEL_DELTA
+#define MOUSEKEY_WHEEL_DELTA    1
+#endif
+#ifndef MOUSEKEY_DELAY
+#define MOUSEKEY_DELAY 50
+#endif
+#ifndef MOUSEKEY_INTERVAL
+#define MOUSEKEY_INTERVAL 20
+#endif
+#ifndef MOUSEKEY_MAX_SPEED
+#define MOUSEKEY_MAX_SPEED 4
+#endif
+#ifndef MOUSEKEY_TIME_TO_MAX
+#define MOUSEKEY_TIME_TO_MAX 30
+#endif
+#ifndef MOUSEKEY_WHEEL_MAX_SPEED
+#define MOUSEKEY_WHEEL_MAX_SPEED 7
+#endif
+#ifndef MOUSEKEY_WHEEL_TIME_TO_MAX
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 40
+#endif
+
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x6050
 #define DEVICE_VER      0x0104
-#define MANUFACTURER    Costar
-#define PRODUCT         Majestouch
+#define MANUFACTURER    Bathroom Epiphanies
+#define PRODUCT         Kitten Paw Majestouch
 
 /* message strings */
 #define DESCRIPTION     t.m.k. keyboard firmware for Majestouch
