@@ -64,6 +64,9 @@
 /* Set 0 if need no debouncing */
 #define DEBOUNCE    5
 
+// use a custom key handler in custom/keymap.c core
+#define CUSTOM_KEY_HANDLING
+
 /* key combination for command */
 #define IS_COMMAND() (keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
 

@@ -1,5 +1,5 @@
 
-const uint8_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
+const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
     /* Layer 0: Standard ANSI layer */
     KEYMAP(\
          ESC, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11,  F12,        PSCR,SLCK,PAUS,                         \
@@ -13,17 +13,19 @@ const uint8_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
           ESC,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,        TRNS,TRNS,TRNS,                         \
          TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,SLSH,FN16,TRNS,   TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS, \
          TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN17,FN18,FN21,   TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS, \
-         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN19,FN20,     TRNS,                      TRNS,TRNS,TRNS,      \
-         FN31,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN22,     TRNS,        TRNS,         TRNS,TRNS,TRNS,TRNS, \
+         TRNS,FN32,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN19,FN20,     TRNS,                      TRNS,TRNS,TRNS,      \
+         FN31,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN22,     FN31,        TRNS,         TRNS,TRNS,TRNS,TRNS, \
          TRNS,TRNS,TRNS,               TRNS,               TRNS,TRNS,TRNS,TRNS,   TRNS,TRNS,TRNS,    TRNS,TRNS),
-    /* Layer 2: programming layer 2*/
+    /* Layer 2: programming layer 2
+       all keys that are not FN keys are sent as LSFT+key on this layer
+    */
     KEYMAP(\
-          ESC,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,        TRNS,TRNS,TRNS,                         \
-         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN23,RBRC,TRNS,   TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS, \
-         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN24,FN25,FN28,   TRNS,TRNS,TRNS,    TRNS,TRNS,TRNS,TRNS, \
-         TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,FN26,FN27,     TRNS,                      TRNS,TRNS,TRNS,      \
-         FN31,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,NUBS,FN29,FN30,     TRNS,        TRNS,         TRNS,TRNS,TRNS,TRNS, \
-         TRNS,TRNS,TRNS,               TRNS,               TRNS,TRNS,TRNS,TRNS,   TRNS,TRNS,TRNS,    TRNS,TRNS),
+         ESC, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11,  F12,        PSCR,SLCK,PAUS,                         \
+         GRV, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   FN23,RBRC,BSPC,   INS, HOME,PGUP,    NLCK,PSLS,PAST,PMNS, \
+         TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   FN24,FN25,FN28,   DEL, END, PGDN,    P7,  P8,  P9,  PPLS, \
+         RALT,A,   S,   D,   F,   G,   H,   J,   K,   L,   FN26,FN27,      ENT,                      P4,  P5,  P6,        \
+         FN31,NUBS,Z,   X,   C,   V,   B,   N,   M,   NUBS,FN29,FN30,     FN31,        UP,           P1,  P2,  P3,  PENT, \
+         LCTL,LGUI,LALT,               SPC,                FN0, FN1,  FN2,RCTL,   LEFT,DOWN,RGHT,    P0,  PDOT),          \
     /* Layer 3: media layer */
     KEYMAP(\
           FN3,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
