@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
          TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   FN24,FN25,FN28,   DEL, END, PGDN,    P7,  P8,  P9,  PPLS, \
          RALT,A,   S,   D,   F,   G,   H,   J,   K,   L,   FN26,FN27,      ENT,                      P4,  P5,  P6,        \
          FN31,NUBS,Z,   X,   C,   V,   B,   N,   M,   NUBS,FN29,FN30,     FN31,        UP,           P1,  P2,  P3,  PENT, \
-         LCTL,LGUI,LALT,               SPC,                FN0, FN1,  FN2,RCTL,   LEFT,DOWN,RGHT,    P0,  PDOT),          \
+         LCTL,LGUI,LALT,               SPC,                 FN0, FN1, FN2,RCTL,   LEFT,DOWN,RGHT,    P0,  PDOT),          \
     /* Layer 3: media layer */
     KEYMAP(\
           FN3,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
@@ -38,9 +38,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
     KEYMAP(\
           FN3,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
            NO,ACL0,ACL1,ACL2,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
-           NO,  NO,BTN4,MS_U,BTN5,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
+           NO,  NO,BTN4,MS_U,BTN5,  NO,   Y,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
            NO,  NO,MS_L,MS_D,MS_R,  NO,WH_L,WH_D,WH_U,WH_R,  NO,  NO,     BTN1,                        NO,  NO,  NO,      \
-         LSFT,  NO,  NO,  NO,  NO,  NO,  NO,BTN2,BTN3,  NO,  NO,  NO,     RSFT,          NO,           NO,  NO,  NO,  NO, \
+         LSFT,  NO,   Z,   X,   C,   V,  NO,BTN2,BTN3,  NO,  NO,  NO,     RSFT,          NO,           NO,  NO,  NO,  NO, \
          LCTL,  NO,  NO,               BTN1,                FN0,  NO, APP,RCTL,     NO,  NO,  NO,      NO,  NO)
 
 };
