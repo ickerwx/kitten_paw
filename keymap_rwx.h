@@ -28,20 +28,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
           FN6,LGUI,LALT,                SPC,                FN0, FN1, FN2, FN7,   LEFT,DOWN,RGHT,      P0,PDOT),          \
     /* Layer 3: media layer */
     KEYMAP(\
-          FN3,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
+          PWR,SLEP,WAKE,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
            NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,   MPRV,MPLY,MNXT,      NO,  NO,  NO,  NO, \
            NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,   VOLD,MUTE,VOLU,      NO,  NO,  NO,  NO, \
            NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,       NO,                        NO,  NO,  NO,      \
-           NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,       NO,          NO,           NO,  NO,  NO,  NO, \
-           NO,  NO,  NO,                 NO,                 NO,  NO,TRNS,  NO,     NO,  NO,  NO,      NO,  NO),
+           NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,       NO,        EJCT,           NO,  NO,  NO,  NO, \
+           NO,  NO,  NO,                 NO,                 NO,  NO,TRNS,  NO,   MRWD,MSTP,MFFD,      NO,  NO),
     /* Layer 4: Mouse layer */
     KEYMAP(\
           FN3,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
            NO,ACL0,ACL1,ACL2,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
            NO,  NO,BTN4,MS_U,BTN5,  NO,   Y,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
            NO,  NO,MS_L,MS_D,MS_R,  NO,WH_L,WH_D,WH_U,WH_R,  NO,  NO,     BTN1,                        NO,  NO,  NO,      \
-         LSFT,  NO,   Z,   X,   C,   V,  NO,BTN2,BTN3,  NO,  NO,  NO,     RSFT,          NO,           NO,  NO,  NO,  NO, \
-         LCTL,  NO,  NO,               BTN1,                FN0,  NO, APP,RCTL,     NO,  NO,  NO,      NO,  NO)
+         LSFT,  NO,   Z,   X,   C,   V,  NO,BTN2,BTN3,  NO,  NO,  NO,     RSFT,          UP,           NO,  NO,  NO,  NO, \
+         LCTL,  NO,  NO,               BTN1,                FN0,  NO, APP,RCTL,   LEFT,DOWN,RGHT,      NO,  NO)
 
 };
 
