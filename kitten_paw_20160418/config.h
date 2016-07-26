@@ -67,6 +67,8 @@
 // use a custom key handler in custom/keymap.c core
 #define CUSTOM_KEY_HANDLING
 
+#define ONESHOT_TIMEOUT 500
+
 /* key combination for command */
 #define IS_COMMAND() (keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
 

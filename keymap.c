@@ -97,7 +97,13 @@ function to return a macro for each keypress.
 action_t handle_programming_layer_2_shift(uint16_t keycode) {
   action_t action;
   action.code = ACTION_NO;
-  if (keycode >= KC_A && keycode <= KC_EXSEL) {
+  if (keycode >= KC_A && keycode <= KC_EXSEL && \
+     !(  // do not send LSFT + these keycodes, they are needed for emulating the US layout
+         keycode == KC_NONUS_BSLASH ||
+         keycode == KC_RBRC ||
+         keycode == KC_BSLS ||
+         keycode == KC_GRV
+    )) {
     action.code = ACTION_MODS_KEY(MOD_LSFT, keycode);
   }
   return action;
@@ -133,4 +139,81 @@ action_t keymap_fn_to_action(uint16_t keycode) {
   else
     action.code = ACTION_NO;
   return action;
+}
+
+/* if LCTRL is tabbed, print (, or ) if RCTRL is tabbed */
+void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    // The code is copied from keymap_hasu.c in the tmk keyboards hhkb folder
+    // Debug output
+    if (record->event.pressed) dprint("P"); else dprint("R");
+    dprintf("%d", record->tap.count);
+    if (record->tap.interrupted) dprint("i");
+    dprint("\n");
+
+    switch (id) {
+        case LCTRL_PAREN:
+            if (record->event.pressed) {
+                if (record->tap.count > 0 && !record->tap.interrupted) {
+                    if (record->tap.interrupted) {
+                        dprint("tap interrupted\n");
+                        register_mods(MOD_BIT(KC_LCTL));
+                    }
+                } else {
+                    register_mods(MOD_BIT(KC_LCTL));
+                }
+            } else {
+                if (record->tap.count > 0 && !(record->tap.interrupted)) {
+                    add_weak_mods(MOD_BIT(KC_LSHIFT));
+                    send_keyboard_report();
+                    register_code(KC_8);
+                    unregister_code(KC_8);
+                    del_weak_mods(MOD_BIT(KC_LSHIFT));
+                    send_keyboard_report();
+                    record->tap.count = 0;  // ad hoc: cancel tap
+                } else {
+                    unregister_mods(MOD_BIT(KC_LCTL));
+                }
+            }
+            break;
+        case RCTRL_PAREN:
+            if (record->event.pressed) {
+                if (record->tap.count > 0 && !record->tap.interrupted) {
+                    if (record->tap.interrupted) {
+                        dprint("tap interrupted\n");
+                        register_mods(MOD_BIT(KC_RCTL));
+                    }
+                } else {
+                    register_mods(MOD_BIT(KC_RCTL));
+                }
+            } else {
+                if (record->tap.count > 0 && !(record->tap.interrupted)) {
+                    add_weak_mods(MOD_BIT(KC_LSHIFT));
+                    send_keyboard_report();
+                    register_code(KC_9);
+                    unregister_code(KC_9);
+                    del_weak_mods(MOD_BIT(KC_LSHIFT));
+                    send_keyboard_report();
+                    record->tap.count = 0;  // ad hoc: cancel tap
+                } else {
+                    unregister_mods(MOD_BIT(KC_RCTL));
+                }
+            }
+            break;
+    }
+}
+
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
+{
+    switch (id) {
+        case GRV: // macro to print accent grave
+            return (record->event.pressed ?
+                    MACRO( D(LSFT), T(EQL), U(RALT), T(SPC), END) :
+                    MACRO_NONE );
+        case CFLEX: // print accent circonflex
+            return (record->event.pressed ?
+                    MACRO( T(GRV), T(SPC), END ) :
+                    MACRO_NONE );
+    }
+    return MACRO_NONE;
 }
