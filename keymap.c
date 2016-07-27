@@ -76,6 +76,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 #include "keymap_rwx.h"
+#include "led.h"
 
 #define KEYMAPS_SIZE    (sizeof(keymaps) / sizeof(keymaps[0]))
 #define FN_ACTIONS_SIZE (sizeof(fn_actions) / sizeof(fn_actions[0]))
@@ -216,4 +217,20 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
                     MACRO_NONE );
     }
     return MACRO_NONE;
+}
+
+void hook_layer_change(uint32_t layer_state) {
+  // this hook sets the keyboard indicator LEDs
+  // I use the caps lock LED to signal use of the programming layer and
+  // the scroll lock LED to show the use of the mouse layer
+  uint8_t highest_layer;
+  highest_layer = biton32(layer_state);
+  // first disable layer indicators
+  led_set(host_keyboard_leds() & ~(1<<USB_LED_CAPS_LOCK));
+  led_set(host_keyboard_leds() & ~(1<<USB_LED_SCROLL_LOCK));
+  if (highest_layer == MOUSE) {
+    led_set(host_keyboard_leds() | (1<<USB_LED_SCROLL_LOCK));
+  } else if (highest_layer == PROG1 || highest_layer == PROG2) {
+    led_set(host_keyboard_leds() | (1<<USB_LED_CAPS_LOCK));
+  }
 }

@@ -69,6 +69,8 @@
 
 #define ONESHOT_TIMEOUT 500
 
+#define TAPPING_TOGGLE 2
+
 /* key combination for command */
 #define IS_COMMAND() (keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
 
