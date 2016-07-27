@@ -201,6 +201,54 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
                 }
             }
             break;
+        case LALT_BRACKET:
+            if (record->event.pressed) {
+                if (record->tap.count > 0 && !record->tap.interrupted) {
+                    if (record->tap.interrupted) {
+                        dprint("tap interrupted\n");
+                        register_mods(MOD_BIT(KC_LALT));
+                    }
+                } else {
+                    register_mods(MOD_BIT(KC_LALT));
+                }
+            } else {
+                if (record->tap.count > 0 && !(record->tap.interrupted)) {
+                    add_weak_mods(MOD_BIT(KC_RALT));
+                    send_keyboard_report();
+                    register_code(KC_8);
+                    unregister_code(KC_8);
+                    del_weak_mods(MOD_BIT(KC_RALT));
+                    send_keyboard_report();
+                    record->tap.count = 0;  // ad hoc: cancel tap
+                } else {
+                    unregister_mods(MOD_BIT(KC_LALT));
+                }
+            }
+            break;
+        case RALT_BRACKET:
+            if (record->event.pressed) {
+                if (record->tap.count > 0 && !record->tap.interrupted) {
+                    if (record->tap.interrupted) {
+                        dprint("tap interrupted\n");
+                        register_mods(MOD_BIT(KC_RALT));
+                    }
+                } else {
+                    register_mods(MOD_BIT(KC_RALT));
+                }
+            } else {
+                if (record->tap.count > 0 && !(record->tap.interrupted)) {
+                    add_weak_mods(MOD_BIT(KC_RALT));
+                    send_keyboard_report();
+                    register_code(KC_9);
+                    unregister_code(KC_9);
+                    del_weak_mods(MOD_BIT(KC_RALT));
+                    send_keyboard_report();
+                    record->tap.count = 0;  // ad hoc: cancel tap
+                } else {
+                    unregister_mods(MOD_BIT(KC_RALT));
+                }
+            }
+            break;
     }
 }
 

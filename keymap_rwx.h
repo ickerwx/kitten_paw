@@ -7,7 +7,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
           TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,LBRC,RBRC,BSLS,    DEL, END,PGDN,      P7,  P8,  P9,PPLS, \
           FN0,   A,   S,   D,   F,   G,   H,   J,   K,   L,SCLN,QUOT,      ENT,                        P4,  P5,  P6,      \
           FN4,NUBS,   Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH,      FN5,          UP,           P1,  P2,  P3,PENT, \
-          FN6,LGUI,LALT,                SPC,               RALT, FN1, FN2, FN7,   LEFT,DOWN,RGHT,      P0,PDOT),          \
+          FN6,LGUI,FN33,                SPC,               FN34, FN1, FN2, FN7,   LEFT,DOWN,RGHT,      P0,PDOT),          \
     /* Layer 1: programming layer 1*/
     KEYMAP(\
           ESC,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,        TRNS,TRNS,TRNS,                         \
@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
           TAB,   Q,   W,   E,   R,   T,   Z,   U,   I,   O,   P,FN24,FN25,FN28,    DEL, END,PGDN,      P7,  P8,  P9,PPLS, \
           FN0,   A,   S,   D,   F,   G,   H,   J,   K,   L,FN26,FN27,      ENT,                        P4,  P5,  P6,      \
          FN31,FN32,   Y,   X,   C,   V,   B,   N,   M,NUBS,FN29,FN30,     FN31,          UP,           P1,  P2,  P3,PENT, \
-          FN6,LGUI,LALT,                SPC,               RALT, FN1, FN2, FN7,   LEFT,DOWN,RGHT,      P0,PDOT),          \
+          FN6,LGUI,FN33,                SPC,               FN34, FN1, FN2, FN7,   LEFT,DOWN,RGHT,      P0,PDOT),          \
     /* Layer 3: media layer */
     KEYMAP(\
           PWR,SLEP,WAKE,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
@@ -47,7 +47,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
 
 enum function_id {
     LCTRL_PAREN,
-    RCTRL_PAREN
+    RCTRL_PAREN,
+    LALT_BRACKET,
+    RALT_BRACKET
 };
 
 enum macro_id {
@@ -97,6 +99,8 @@ static const uint16_t PROGMEM fn_actions[] = {
     [29] = ACTION_MODS_KEY(MOD_LSFT, KC_NUBS),
     [30] = ACTION_MODS_KEY(MOD_LSFT, KC_MINS),
     [31] = ACTION_LAYER_MOMENTARY(PROG2),  //Shift, change to programming layer 2 (2)
-    [32] = ACTION_MODS_KEY(MOD_LSFT, KC_NUBS)
+    [32] = ACTION_MODS_KEY(MOD_LSFT, KC_NUBS),
+    [33] = ACTION_FUNCTION_TAP(LALT_BRACKET),
+    [34] = ACTION_FUNCTION_TAP(RALT_BRACKET),
 };
 
