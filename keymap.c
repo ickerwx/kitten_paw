@@ -142,9 +142,33 @@ action_t keymap_fn_to_action(uint16_t keycode) {
   return action;
 }
 
-/* if LCTRL is tabbed, print (, or ) if RCTRL is tabbed */
-void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
+
+void tap_helper(keyrecord_t *record, uint16_t orig_mod, uint16_t macro_mod, uint16_t macro_kc ) {
+  if (record->event.pressed) {
+      if (record->tap.count > 0 && !record->tap.interrupted) {
+          if (record->tap.interrupted) {
+              dprint("tap interrupted\n");
+              register_mods(MOD_BIT(orig_mod));
+          }
+      } else {
+          register_mods(MOD_BIT(orig_mod));
+      }
+  } else {
+      if (record->tap.count > 0 && !(record->tap.interrupted)) {
+          add_weak_mods(MOD_BIT(macro_mod));
+          send_keyboard_report();
+          register_code(macro_kc);
+          unregister_code(macro_kc);
+          del_weak_mods(MOD_BIT(macro_mod));
+          send_keyboard_report();
+          record->tap.count = 0;  // ad hoc: cancel tap
+      } else {
+          unregister_mods(MOD_BIT(orig_mod));
+      }
+  }
+}
+/* if LCTRL is tabbed, print (, or ) if RCTRL is tabbed, same for LALT/RALT and [/] */
+void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
     // The code is copied from keymap_hasu.c in the tmk keyboards hhkb folder
     // Debug output
     if (record->event.pressed) dprint("P"); else dprint("R");
@@ -154,106 +178,21 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt)
 
     switch (id) {
         case LCTRL_PAREN:
-            if (record->event.pressed) {
-                if (record->tap.count > 0 && !record->tap.interrupted) {
-                    if (record->tap.interrupted) {
-                        dprint("tap interrupted\n");
-                        register_mods(MOD_BIT(KC_LCTL));
-                    }
-                } else {
-                    register_mods(MOD_BIT(KC_LCTL));
-                }
-            } else {
-                if (record->tap.count > 0 && !(record->tap.interrupted)) {
-                    add_weak_mods(MOD_BIT(KC_LSHIFT));
-                    send_keyboard_report();
-                    register_code(KC_8);
-                    unregister_code(KC_8);
-                    del_weak_mods(MOD_BIT(KC_LSHIFT));
-                    send_keyboard_report();
-                    record->tap.count = 0;  // ad hoc: cancel tap
-                } else {
-                    unregister_mods(MOD_BIT(KC_LCTL));
-                }
-            }
+            tap_helper(record, KC_LCTL, KC_LSHIFT, KC_8);
             break;
         case RCTRL_PAREN:
-            if (record->event.pressed) {
-                if (record->tap.count > 0 && !record->tap.interrupted) {
-                    if (record->tap.interrupted) {
-                        dprint("tap interrupted\n");
-                        register_mods(MOD_BIT(KC_RCTL));
-                    }
-                } else {
-                    register_mods(MOD_BIT(KC_RCTL));
-                }
-            } else {
-                if (record->tap.count > 0 && !(record->tap.interrupted)) {
-                    add_weak_mods(MOD_BIT(KC_LSHIFT));
-                    send_keyboard_report();
-                    register_code(KC_9);
-                    unregister_code(KC_9);
-                    del_weak_mods(MOD_BIT(KC_LSHIFT));
-                    send_keyboard_report();
-                    record->tap.count = 0;  // ad hoc: cancel tap
-                } else {
-                    unregister_mods(MOD_BIT(KC_RCTL));
-                }
-            }
+            tap_helper(record, KC_RCTL, KC_LSHIFT, KC_9);
             break;
         case LALT_BRACKET:
-            if (record->event.pressed) {
-                if (record->tap.count > 0 && !record->tap.interrupted) {
-                    if (record->tap.interrupted) {
-                        dprint("tap interrupted\n");
-                        register_mods(MOD_BIT(KC_LALT));
-                    }
-                } else {
-                    register_mods(MOD_BIT(KC_LALT));
-                }
-            } else {
-                if (record->tap.count > 0 && !(record->tap.interrupted)) {
-                    add_weak_mods(MOD_BIT(KC_RALT));
-                    send_keyboard_report();
-                    register_code(KC_8);
-                    unregister_code(KC_8);
-                    del_weak_mods(MOD_BIT(KC_RALT));
-                    send_keyboard_report();
-                    record->tap.count = 0;  // ad hoc: cancel tap
-                } else {
-                    unregister_mods(MOD_BIT(KC_LALT));
-                }
-            }
+            tap_helper(record, KC_LALT, KC_RALT, KC_8);
             break;
         case RALT_BRACKET:
-            if (record->event.pressed) {
-                if (record->tap.count > 0 && !record->tap.interrupted) {
-                    if (record->tap.interrupted) {
-                        dprint("tap interrupted\n");
-                        register_mods(MOD_BIT(KC_RALT));
-                    }
-                } else {
-                    register_mods(MOD_BIT(KC_RALT));
-                }
-            } else {
-                if (record->tap.count > 0 && !(record->tap.interrupted)) {
-                    add_weak_mods(MOD_BIT(KC_RALT));
-                    send_keyboard_report();
-                    register_code(KC_9);
-                    unregister_code(KC_9);
-                    del_weak_mods(MOD_BIT(KC_RALT));
-                    send_keyboard_report();
-                    record->tap.count = 0;  // ad hoc: cancel tap
-                } else {
-                    unregister_mods(MOD_BIT(KC_RALT));
-                }
-            }
+            tap_helper(record, KC_RALT, KC_RALT, KC_9);
             break;
     }
 }
 
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt)
-{
+const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
     switch (id) {
         case GRV: // macro to print accent grave
             return (record->event.pressed ?
