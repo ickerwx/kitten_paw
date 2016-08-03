@@ -41,7 +41,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
            NO,  NO,BTN4,MS_U,BTN5,  NO,   Y,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
           FN0,  NO,MS_L,MS_D,MS_R,  NO,WH_L,WH_D,WH_U,WH_R,  NO,  NO,     BTN1,                        NO,  NO,  NO,      \
          LSFT,  NO,   Z,   X,   C,   V,  NO,BTN2,BTN3,  NO,  NO,  NO,     RSFT,          UP,           NO,  NO,  NO,  NO, \
-         LCTL,  NO,  NO,               BTN1,               RALT,  NO, APP,RCTL,   LEFT,DOWN,RGHT,      NO,  NO)
+         LCTL,LGUI,LALT,               BTN1,               RALT,RGUI, APP,RCTL,   LEFT,DOWN,RGHT,      NO,  NO)
 
 };
 
