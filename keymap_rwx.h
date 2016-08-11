@@ -7,7 +7,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
           TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,LBRC,RBRC,BSLS,    DEL, END,PGDN,      P7,  P8,  P9,PPLS, \
           FN0,   A,   S,   D,   F,   G,   H,   J,   K,   L,SCLN,QUOT,      ENT,                        P4,  P5,  P6,      \
           FN4,NUBS,   Z,   X,   C,   V,   B,   N,   M,COMM, DOT,SLSH,      FN5,          UP,           P1,  P2,  P3,PENT, \
-          FN6,LGUI,FN33,                SPC,               FN34, FN1, FN2, FN7,   LEFT,DOWN,RGHT,      P0,PDOT),          \
+          FN6,LGUI,FN33,               FN35,               FN34, FN1, FN2, FN7,   LEFT,DOWN,RGHT,      P0,PDOT),          \
     /* Layer 1: programming layer 1*/
     KEYMAP(\
           ESC,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,        TRNS,TRNS,TRNS,                         \
@@ -25,7 +25,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
           TAB,   Q,   W,   E,   R,   T,   Z,   U,   I,   O,   P,FN24,FN25,FN28,    DEL, END,PGDN,      P7,  P8,  P9,PPLS, \
           FN0,   A,   S,   D,   F,   G,   H,   J,   K,   L,FN26,FN27,      ENT,                        P4,  P5,  P6,      \
          FN31,FN32,   Y,   X,   C,   V,   B,   N,   M,NUBS,FN29,FN30,     FN31,          UP,           P1,  P2,  P3,PENT, \
-          FN6,LGUI,FN33,                SPC,               FN34, FN1, FN2, FN7,   LEFT,DOWN,RGHT,      P0,PDOT),          \
+          FN6,LGUI,FN33,               FN35,               FN34, FN1, FN2, FN7,   LEFT,DOWN,RGHT,      P0,PDOT),          \
     /* Layer 3: media layer */
     KEYMAP(\
           PWR,SLEP,WAKE,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
@@ -37,11 +37,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
     /* Layer 4: Mouse layer */
     KEYMAP(\
           FN3,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
-           NO,ACL0,ACL1,ACL2,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
-           NO,  NO,BTN4,MS_U,BTN5,  NO,   Y,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
-          FN0,  NO,MS_L,MS_D,MS_R,  NO,WH_L,WH_D,WH_U,WH_R,  NO,  NO,     BTN1,                        NO,  NO,  NO,      \
-         LSFT,  NO,   Z,   X,   C,   V,  NO,BTN2,BTN3,  NO,  NO,  NO,     RSFT,          UP,           NO,  NO,  NO,  NO, \
-         LCTL,LGUI,LALT,               BTN1,               RALT,RGUI, APP,RCTL,   LEFT,DOWN,RGHT,      NO,  NO)
+           NO,ACL0,ACL1,ACL2,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,BSPC,    INS,HOME,PGUP,      NO,  NO,  NO,  NO, \
+           NO,BTN4,WH_D,MS_U,WH_U,  NO,   Y,  NO,  NO,  NO,  NO,  NO,  NO,  NO,    DEL, END,PGDN,      NO,  NO,  NO,  NO, \
+          FN0,BTN5,MS_L,MS_D,MS_R,FN40,WH_L,WH_D,WH_U,WH_R,  NO,  NO,     BTN1,                        NO,  NO,  NO,      \
+         LSFT,  NO,FN36,FN37,FN38,FN39,  NO,BTN2,BTN3,  NO,  NO,  NO,     RSFT,          UP,           NO,  NO,  NO,PENT, \
+         LCTL,LGUI,LALT,               BTN1,               RALT,RGUI, APP,RCTL,   LEFT,DOWN,RGHT,      NO,  NO),
+    /* Layer 5: Misc layer */
+    KEYMAP(\
+           NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
+           NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
+           NO,SLCT,  NO,  UP,  NO,  NO,  NO,  NO,BSPC, DEL,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
+           NO,  NO,LEFT,DOWN,RGHT,  NO,HOME,PGDN,PGUP,  NO,  NO,  NO,       NO,                        NO,  NO,  NO,      \
+         LSFT,  NO,FN36,FN37,FN38,FN39, SPC, END,  NO,  NO,  NO,  NO,     RSFT,          NO,           NO,  NO,  NO,  NO, \
+         LCTL,LGUI,LALT,               FN35,               RALT,RGUI, APP,RCTL,     NO,  NO,  NO,      NO,  NO)
 
 };
 
@@ -49,7 +57,8 @@ enum function_id {
     LCTRL_PAREN,
     RCTRL_PAREN,
     LALT_BRACKET,
-    RALT_BRACKET
+    RALT_BRACKET,
+    CTRL_CLICK
 };
 
 enum macro_id {
@@ -62,7 +71,8 @@ enum layers {
     PROG1,
     PROG2,
     MEDIA,
-    MOUSE
+    MOUSE,
+    MISC
 };
 
 static const uint16_t PROGMEM fn_actions[] = {
@@ -102,5 +112,11 @@ static const uint16_t PROGMEM fn_actions[] = {
     [32] = ACTION_MODS_KEY(MOD_LSFT, KC_NUBS),
     [33] = ACTION_FUNCTION_TAP(LALT_BRACKET),
     [34] = ACTION_FUNCTION_TAP(RALT_BRACKET),
+    [35] = ACTION_LAYER_TAP_KEY(MISC, KC_SPC),
+    [36] = ACTION_MODS_KEY(MOD_LCTL, KC_Y),
+    [37] = ACTION_MODS_KEY(MOD_LCTL, KC_X),
+    [38] = ACTION_MODS_KEY(MOD_LCTL, KC_C),
+    [39] = ACTION_MODS_KEY(MOD_LCTL, KC_V),
+    [40] = ACTION_FUNCTION_TAP(CTRL_CLICK)
 };
 

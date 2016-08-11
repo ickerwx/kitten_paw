@@ -25,6 +25,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "host.h"
 #include "debug.h"
 #include "keymap.h"
+#include "mousekey.h"
+#include "wait.h"
 
 /*
   Matrix col/row mapping
@@ -188,6 +190,22 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
             break;
         case RALT_BRACKET:
             tap_helper(record, KC_RALT, KC_RALT, KC_9);
+            break;
+        case CTRL_CLICK:
+            if (record->event.pressed) {
+                mousekey_clear();
+                register_mods(MOD_BIT(KC_LCTL));
+                send_keyboard_report();
+                wait_ms(50);
+                mousekey_on(KC_BTN1);
+                mousekey_send();
+                wait_ms(100);
+                mousekey_off(KC_BTN1);
+                mousekey_send();
+                wait_ms(50);
+                unregister_mods(MOD_BIT(KC_LCTL));
+                send_keyboard_report();
+            }
             break;
     }
 }

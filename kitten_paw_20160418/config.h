@@ -20,7 +20,7 @@
 
 /* max value on report descriptor */
 #define MOUSEKEY_MOVE_MAX       127
-#define MOUSEKEY_WHEEL_MAX      127
+#define MOUSEKEY_WHEEL_MAX      110
 
 #ifndef MOUSEKEY_MOVE_DELTA
 #define MOUSEKEY_MOVE_DELTA     5
@@ -41,15 +41,15 @@
 #define MOUSEKEY_TIME_TO_MAX 30
 #endif
 #ifndef MOUSEKEY_WHEEL_MAX_SPEED
-#define MOUSEKEY_WHEEL_MAX_SPEED 7
+#define MOUSEKEY_WHEEL_MAX_SPEED 3
 #endif
 #ifndef MOUSEKEY_WHEEL_TIME_TO_MAX
-#define MOUSEKEY_WHEEL_TIME_TO_MAX 40
+#define MOUSEKEY_WHEEL_TIME_TO_MAX 1000
 #endif
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x6050
+#define PRODUCT_ID      0xFACE
 #define DEVICE_VER      0x0104
 #define MANUFACTURER    Bathroom Epiphanies
 #define PRODUCT         Kitten Paw Majestouch
