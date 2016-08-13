@@ -40,15 +40,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
            NO,ACL0,ACL1,ACL2,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,BSPC,    INS,HOME,PGUP,      NO,  NO,  NO,  NO, \
            NO,BTN4,WH_D,MS_U,WH_U,  NO,   Y,  NO,  NO,  NO,  NO,  NO,  NO,  NO,    DEL, END,PGDN,      NO,  NO,  NO,  NO, \
           FN0,BTN5,MS_L,MS_D,MS_R,FN40,WH_L,WH_D,WH_U,WH_R,  NO,  NO,     BTN1,                        NO,  NO,  NO,      \
-         LSFT,  NO,FN36,FN37,FN38,FN39,  NO,BTN2,BTN3,  NO,  NO,  NO,     RSFT,          UP,           NO,  NO,  NO,PENT, \
+         LSFT,  NO,FN36,FN37,FN38,FN39,  NO,BTN2,BTN3,FN42,FN41,  NO,     RSFT,          UP,           NO,  NO,  NO,PENT, \
          LCTL,LGUI,LALT,               BTN1,               RALT,RGUI, APP,RCTL,   LEFT,DOWN,RGHT,      NO,  NO),
     /* Layer 5: Misc layer */
     KEYMAP(\
            NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
            NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
-           NO,SLCT,  NO,  UP,  NO,  NO,  NO,  NO,BSPC, DEL,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
+           NO,SLCT,FN43,  UP,  NO,  NO,  NO,  NO,BSPC, DEL,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
            NO,  NO,LEFT,DOWN,RGHT,  NO,HOME,PGDN,PGUP,  NO,  NO,  NO,       NO,                        NO,  NO,  NO,      \
-         LSFT,  NO,FN36,FN37,FN38,FN39, SPC, END,  NO,  NO,  NO,  NO,     RSFT,          NO,           NO,  NO,  NO,  NO, \
+         LSFT,  NO,FN36,FN37,FN38,FN39, SPC, END,  NO,FN42,FN41,  NO,     RSFT,          NO,           NO,  NO,  NO,  NO, \
          LCTL,LGUI,LALT,               FN35,               RALT,RGUI, APP,RCTL,     NO,  NO,  NO,      NO,  NO)
 
 };
@@ -110,13 +110,17 @@ static const uint16_t PROGMEM fn_actions[] = {
     [30] = ACTION_MODS_KEY(MOD_LSFT, KC_MINS),
     [31] = ACTION_LAYER_MOMENTARY(PROG2),  //Shift, change to programming layer 2 (2)
     [32] = ACTION_MODS_KEY(MOD_LSFT, KC_NUBS),
-    [33] = ACTION_FUNCTION_TAP(LALT_BRACKET),
-    [34] = ACTION_FUNCTION_TAP(RALT_BRACKET),
-    [35] = ACTION_LAYER_TAP_KEY(MISC, KC_SPC),
-    [36] = ACTION_MODS_KEY(MOD_LCTL, KC_Y),
+    // done with the US layout emulation
+    [33] = ACTION_FUNCTION_TAP(LALT_BRACKET), // tap to print [
+    [34] = ACTION_FUNCTION_TAP(RALT_BRACKET), // tap to print ]
+    [35] = ACTION_LAYER_TAP_KEY(MISC, KC_SPC), // hold tp change to MISC layer
+    [36] = ACTION_MODS_KEY(MOD_LCTL, KC_Y), // bind Ctrl+Z/X/C/V to a single keypress
     [37] = ACTION_MODS_KEY(MOD_LCTL, KC_X),
     [38] = ACTION_MODS_KEY(MOD_LCTL, KC_C),
     [39] = ACTION_MODS_KEY(MOD_LCTL, KC_V),
-    [40] = ACTION_FUNCTION_TAP(CTRL_CLICK)
+    [40] = ACTION_FUNCTION_TAP(CTRL_CLICK), // bind Ctrl+left click to a keypress
+    [41] = ACTION_MODS_KEY(MOD_LCTL, KC_PGDN),
+    [42] = ACTION_MODS_KEY(MOD_LCTL, KC_PGUP),
+    [43] = ACTION_MODS_KEY(MOD_LCTL, KC_W),
 };
 

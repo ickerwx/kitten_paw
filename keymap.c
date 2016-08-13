@@ -125,7 +125,7 @@ action_t custom_key_handler(uint8_t layer, uint16_t keycode) {
     // do not handle FN keys here
     return action;
   }
-  if (layer == 2) {
+  if (layer == PROG2) {
     /* every key that is not aN FN key will be handled here
     it will return a macro LSFT + key
     */
