@@ -233,7 +233,7 @@ void hook_layer_change(uint32_t layer_state) {
   // first disable layer indicators
   led_set(host_keyboard_leds() & ~(1<<USB_LED_CAPS_LOCK));
   led_set(host_keyboard_leds() & ~(1<<USB_LED_SCROLL_LOCK));
-  if (highest_layer == MOUSE) {
+  if (highest_layer == MOUSE || highest_layer == MOUSE2) {
     led_set(host_keyboard_leds() | (1<<USB_LED_SCROLL_LOCK));
   } else if (highest_layer == PROG1 || highest_layer == PROG2) {
     led_set(host_keyboard_leds() | (1<<USB_LED_CAPS_LOCK));

@@ -15,37 +15,20 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONFIG_H
+
 #define CONFIG_H
 
 /* max value on report descriptor */
 #define MOUSEKEY_MOVE_MAX       127
 #define MOUSEKEY_WHEEL_MAX      110
-
-#ifndef MOUSEKEY_MOVE_DELTA
 #define MOUSEKEY_MOVE_DELTA     5
-#endif
-#ifndef MOUSEKEY_WHEEL_DELTA
 #define MOUSEKEY_WHEEL_DELTA    1
-#endif
-#ifndef MOUSEKEY_DELAY
 #define MOUSEKEY_DELAY 50
-#endif
-#ifndef MOUSEKEY_INTERVAL
 #define MOUSEKEY_INTERVAL 20
-#endif
-#ifndef MOUSEKEY_MAX_SPEED
 #define MOUSEKEY_MAX_SPEED 4
-#endif
-#ifndef MOUSEKEY_TIME_TO_MAX
 #define MOUSEKEY_TIME_TO_MAX 30
-#endif
-#ifndef MOUSEKEY_WHEEL_MAX_SPEED
 #define MOUSEKEY_WHEEL_MAX_SPEED 3
-#endif
-#ifndef MOUSEKEY_WHEEL_TIME_TO_MAX
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 1000
-#endif
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
@@ -74,4 +57,3 @@
 /* key combination for command */
 #define IS_COMMAND() (keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)))
 
-#endif

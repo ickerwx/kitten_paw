@@ -40,16 +40,24 @@ const uint16_t PROGMEM keymaps[][MATRIX_COLS][MATRIX_ROWS] = {
            NO,ACL0,ACL1,ACL2,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,BSPC,    INS,HOME,PGUP,      NO,  NO,  NO,  NO, \
            NO,BTN4,WH_D,MS_U,WH_U,  NO,   Y,  NO,  NO,  NO,  NO,  NO,  NO,  NO,    DEL, END,PGDN,      NO,  NO,  NO,  NO, \
           FN0,BTN5,MS_L,MS_D,MS_R,FN40,WH_L,WH_D,WH_U,WH_R,  NO,  NO,     BTN1,                        NO,  NO,  NO,      \
-         LSFT,  NO,FN36,FN37,FN38,FN39,  NO,BTN2,BTN3,FN42,FN41,  NO,     RSFT,          UP,           NO,  NO,  NO,PENT, \
+         FN44,  NO,FN36,FN37,FN38,FN39,  NO,BTN2,BTN3,FN42,FN41,  NO,     RSFT,          UP,           NO,  NO,  NO,PENT, \
          LCTL,LGUI,LALT,               BTN1,               RALT,RGUI, APP,RCTL,   LEFT,DOWN,RGHT,      NO,  NO),
-    /* Layer 5: Misc layer */
+    /* Layer 5: Mouse layer 2*/
+    KEYMAP(\
+          FN3,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
+           NO,ACL0,ACL1,ACL2,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,BSPC,    INS,HOME,PGUP,      NO,  NO,  NO,  NO, \
+           NO,BTN4,BTN2,WH_U,BTN3,  NO,   Y,  NO,  NO,  NO,  NO,  NO,  NO,  NO,    DEL, END,PGDN,      NO,  NO,  NO,  NO, \
+          FN0,BTN5,WH_L,WH_D,WH_R,FN40,MS_L,MS_D,MS_U,MS_R,  NO,  NO,     BTN1,                        NO,  NO,  NO,      \
+         FN44,  NO,FN36,FN37,FN38,FN39,  NO,BTN2,BTN3,FN42,FN41,  NO,     RSFT,          UP,           NO,  NO,  NO,PENT, \
+         LCTL,LGUI,LALT,               BTN1,               RALT,RGUI, APP,RCTL,   LEFT,DOWN,RGHT,      NO,  NO),
+    /* Layer 6: Misc layer */
     KEYMAP(\
            NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,          NO,  NO,  NO,                         \
            NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
            NO,SLCT,FN43,  UP,  NO,  NO,  NO,  NO,BSPC, DEL,  NO,  NO,  NO,  NO,     NO,  NO,  NO,      NO,  NO,  NO,  NO, \
            NO,  NO,LEFT,DOWN,RGHT,  NO,HOME,PGDN,PGUP,  NO,  NO,  NO,       NO,                        NO,  NO,  NO,      \
          LSFT,  NO,FN36,FN37,FN38,FN39, SPC, END,  NO,FN42,FN41,  NO,     RSFT,          NO,           NO,  NO,  NO,  NO, \
-         LCTL,LGUI,LALT,               FN35,               RALT,RGUI, APP,RCTL,     NO,  NO,  NO,      NO,  NO)
+         LCTL,LGUI,LALT,               FN35,               RALT,RGUI, APP,RCTL,     NO,  NO,  NO,      NO,  NO),
 
 };
 
@@ -72,7 +80,8 @@ enum layers {
     PROG2,
     MEDIA,
     MOUSE,
-    MISC
+    MOUSE2,
+    MISC,
 };
 
 static const uint16_t PROGMEM fn_actions[] = {
@@ -122,5 +131,6 @@ static const uint16_t PROGMEM fn_actions[] = {
     [41] = ACTION_MODS_KEY(MOD_LCTL, KC_PGDN),
     [42] = ACTION_MODS_KEY(MOD_LCTL, KC_PGUP),
     [43] = ACTION_MODS_KEY(MOD_LCTL, KC_W),
+    [44] = ACTION_LAYER_MOMENTARY(MOUSE2),  //Shift, change to mouse layer 2
 };
 
